@@ -18,8 +18,8 @@ class ContactFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'contact' => fake()->unique()->phoneNumber(),
-            'email' => fake()->unique()->email(),
+            'contact' => fake()->unique()->numerify('#########'), // Exactly 9 digits
+            'email' => fake()->unique()->safeEmail(),
             'created_at' => fake()->dateTime(),
             'updated_at' => fake()->dateTime(),
             'deleted_at' => null,

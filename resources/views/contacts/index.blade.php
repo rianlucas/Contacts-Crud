@@ -10,12 +10,19 @@
         </h1>
         <p class="text-muted">Manage all your contacts in one place</p>
     </div>
+    @auth
     <div class="col-md-4 text-end">
-        @auth
         <a href="{{ route('contacts.create') }}" class="btn btn-primary btn-lg">
             <i class="bi bi-plus-circle"></i> Add New Contact
         </a>
     </div>
+    @else
+    <div class="col-md-4 text-end">
+        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-lg">
+            <i class="bi bi-box-arrow-in-right"></i> Login to Manage
+        </a>
+    </div>
+    @endauth
 </div>
 
 @if($contacts->isEmpty())
@@ -59,6 +66,7 @@
                                         <i class="bi bi-eye"></i> View
                                     </a>
                                     
+                                    @auth
                                     <a href="{{ route('contacts.edit', $contact) }}" 
                                        class="btn btn-sm btn-warning" 
                                        title="Edit Contact">
@@ -77,6 +85,7 @@
                                             <i class="bi bi-trash"></i> Delete
                                         </button>
                                     </form>
+                                    @endauth
                                 </div>
                             </td>
                         </tr>

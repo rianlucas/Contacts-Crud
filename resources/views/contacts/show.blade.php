@@ -90,6 +90,7 @@
                         <i class="bi bi-arrow-left"></i> Back to List
                     </a>
                     
+                    @auth
                     <div class="btn-group">
                         <a href="{{ route('contacts.edit', $contact) }}" class="btn btn-warning">
                             <i class="bi bi-pencil"></i> Edit Contact
@@ -102,6 +103,11 @@
                             <i class="bi bi-trash"></i> Delete Contact
                         </button>
                     </div>
+                    @else
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-box-arrow-in-right"></i> Login to Edit
+                    </a>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -109,6 +115,7 @@
     </div>
 </div>
 
+@auth
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -143,4 +150,5 @@
         </div>
     </div>
 </div>
+@endauth
 @endsection
